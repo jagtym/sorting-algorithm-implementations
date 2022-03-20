@@ -5,9 +5,7 @@ using namespace std;
 void insertion_sort(int array[], int length) {
     for (int i = 1; i < length; i++) {
         for (int j = i; j > 0; j--) {
-
-            int current = array[j];
-            if (current > array[j - 1]) {
+            if (array[j] > array[j - 1]) {
                swap(array[j], array[j - 1]); 
             }
         }
