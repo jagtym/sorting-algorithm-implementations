@@ -4,18 +4,6 @@ using namespace std;
 
 int divide(int array[], int start, int end) {
     int pivot_index = end - 1;
-    //int limit_index = start;
-    //
-    // for (int i = limit + 1; i < pivot_index; i++) {
-    //    if (array[i] < array[pivot_index]) {
-    //        swap(array[limit_index], array[i])
-    //        limit_index++;
-    //    } 
-    // }
-
-    // swap(array[limit_index + 1], array[pivot_index])
-    // return limit_index;
-
     int left_index = start;
     int right_index = end - 2;
 
