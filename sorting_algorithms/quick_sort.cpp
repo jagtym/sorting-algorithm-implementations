@@ -35,11 +35,6 @@ void quick_sort(int array[], int start, int end) {
     
     int divide_pivot_index = divide(array, start, end);
 
-    for (int i = 0; i < end; i++) {
-        cout << array[i] << " ";
-    }
-    cout << divide_pivot_index << "\n";
-
     quick_sort(array, start, divide_pivot_index);
     quick_sort(array, divide_pivot_index + 1, end);
 }
