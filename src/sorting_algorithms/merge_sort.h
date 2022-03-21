@@ -1,4 +1,4 @@
-class MergeSort {
+class MergeSort : public SortingMethod {
     int _comparisons = 0;
     int _merges = 0;
 
@@ -63,5 +63,9 @@ class MergeSort {
         _merges = 0;
 
         merge_sort(array, 0, length - 1);
+    }
+
+    void print_stats() {
+        cout << "aaa";
     }
 };

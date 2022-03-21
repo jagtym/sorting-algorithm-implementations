@@ -1,4 +1,4 @@
-class ShellSort {
+class ShellSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
 
@@ -26,5 +26,9 @@ class ShellSort {
         _swaps = 0;
 
         shell_sort(array, 0, length);
+    }
+
+    void print_stats() {
+        cout << "aaa";
     }
 };

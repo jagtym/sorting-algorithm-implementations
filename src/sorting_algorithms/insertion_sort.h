@@ -1,4 +1,4 @@
-class InsertionSort {
+class InsertionSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
 
@@ -20,6 +20,10 @@ class InsertionSort {
         _swaps = 0;
 
         insertion_sort(array, length);
+    }
+
+    void print_stats() {
+        cout << "aaa";
     }
 
 };

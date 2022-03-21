@@ -1,4 +1,4 @@
-class QuickSort {
+class QuickSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
 
@@ -50,5 +50,9 @@ class QuickSort {
             _swaps = 0;
 
             quick_sort(array, 0, length);
+        }
+
+        void print_stats() {
+            cout << "aaa";
         }
 };

@@ -1,4 +1,4 @@
-class HeapSort {
+class HeapSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
 
@@ -39,5 +39,9 @@ class HeapSort {
         _swaps = 0;
 
         heap_sort(array, length);
+    }
+
+    void print_stats() {
+        cout << "aaa";
     }
 };
