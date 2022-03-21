@@ -3,8 +3,12 @@
 #include <string>
 #include <sstream>
 #include <random>
+#include <algorithm>
+#include <chrono>
+#include <fstream>
 
 using namespace std;
+using namespace std::chrono;
 
 #include "sorting_method.h"
 #include "sorting_algorithms/quick_sort.h"

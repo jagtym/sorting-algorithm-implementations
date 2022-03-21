@@ -41,10 +41,16 @@ void manual_entry_mode() {
         print_array(array, array_length);
 
         cout << "Ciąg posortowany: " << endl;
+        auto start = high_resolution_clock::now();
         sortings[i] -> sort(array, array_length);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+ 
         print_array(array, array_length);
 
         cout << "Informacje na temat sortowania: " << endl;
+        cout << "Czas sortowania: "
+         << duration.count() << " mikrosekund" << endl;
         sortings[i] -> print_stats();
         sortings[i] -> print_optional();
 
