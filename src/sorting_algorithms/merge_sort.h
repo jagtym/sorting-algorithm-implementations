@@ -76,4 +76,12 @@ class MergeSort : public SortingMethod {
         std::string get_name() {
             return _name;
         }
+
+        int get_comp() {
+            return _comparisons;
+        }
+
+        int get_swaps() {
+            return 0;
+        }
 };

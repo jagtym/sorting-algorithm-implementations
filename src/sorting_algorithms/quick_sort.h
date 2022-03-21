@@ -69,4 +69,14 @@ class QuickSort : public SortingMethod {
         std::string get_name() {
             return _name;
         }
+        
+        int get_comp() {
+            return _comparisons;
+        }
+
+        int get_swaps() {
+            return _swaps;
+        }
+
+
 };
