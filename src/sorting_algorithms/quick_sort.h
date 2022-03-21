@@ -1,6 +1,7 @@
 class QuickSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
+    std::string _name = "quick sort";
 
     int divide(int array[], int start, int end) {
         int pivot_index = end - 1;
@@ -54,5 +55,9 @@ class QuickSort : public SortingMethod {
 
         void print_stats() {
             cout << "aaa";
+        }
+
+        std::string get_name() {
+            return _name;
         }
 };

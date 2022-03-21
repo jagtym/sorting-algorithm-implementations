@@ -1,6 +1,8 @@
 class MergeSort : public SortingMethod {
     int _comparisons = 0;
     int _merges = 0;
+    std::string _name = "merge sort";
+
 
     void merge(int array[], int start, int mid, int end) {
         int leftArrayLength = mid - start + 1;
@@ -67,5 +69,9 @@ class MergeSort : public SortingMethod {
 
     void print_stats() {
         cout << "aaa";
+    }
+
+    std::string get_name() {
+        return _name;
     }
 };

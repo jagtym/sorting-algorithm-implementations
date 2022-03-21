@@ -1,6 +1,8 @@
 class HeapSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
+    std::string _name = "heap sort";
+
 
     void heap(int array[], int n, int i) {
         int smallest = i;
@@ -43,5 +45,9 @@ class HeapSort : public SortingMethod {
 
     void print_stats() {
         cout << "aaa";
+    }
+
+    std::string get_name() {
+        return _name;
     }
 };

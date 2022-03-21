@@ -1,6 +1,7 @@
 class InsertionSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
+    std::string _name = "insertion sort";
 
     void insertion_sort(int array[], int length) {
         for (int i = 1; i < length; i++) {
@@ -24,6 +25,10 @@ class InsertionSort : public SortingMethod {
 
     void print_stats() {
         cout << "aaa";
+    }
+
+    std::string get_name() {
+        return _name;
     }
 
 };

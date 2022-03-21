@@ -1,6 +1,7 @@
 class ShellSort : public SortingMethod {
     int _comparisons = 0;
     int _swaps = 0;
+    std::string _name = "shell sort";
 
     void shell_sort(int array[], int start, int end) {
         int length = end - start;
@@ -30,5 +31,9 @@ class ShellSort : public SortingMethod {
 
     void print_stats() {
         cout << "aaa";
+    }
+
+    std::string get_name() {
+        return _name;
     }
 };
