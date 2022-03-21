@@ -60,18 +60,20 @@ class MergeSort : public SortingMethod {
     }
 
     public:
-    void sort(int array[], int length) {
-        _comparisons = 0;
-        _merges = 0;
+        void sort(int array[], int length) {
+            _comparisons = 0;
+            _merges = 0;
 
-        merge_sort(array, 0, length - 1);
-    }
+            merge_sort(array, 0, length - 1);
+        }
 
-    void print_stats() {
-        cout << "aaa";
-    }
+        void print_stats() {
+            cout << "Porównania: " << _comparisons << "  Połączenia: " << _merges << endl;
+        }
 
-    std::string get_name() {
-        return _name;
-    }
+        void print_optional() {}
+
+        std::string get_name() {
+            return _name;
+        }
 };

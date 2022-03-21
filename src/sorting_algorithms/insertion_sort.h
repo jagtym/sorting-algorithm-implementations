@@ -16,19 +16,20 @@ class InsertionSort : public SortingMethod {
     }
 
     public:
-    void sort(int array[], int length) {
-        _comparisons = 0;
-        _swaps = 0;
+        void sort(int array[], int length) {
+            _comparisons = 0;
+            _swaps = 0;
 
-        insertion_sort(array, length);
-    }
+            insertion_sort(array, length);
+        }
 
-    void print_stats() {
-        cout << "aaa";
-    }
+        void print_stats() {
+            cout << "Porównania: " << _comparisons << "  Zamiany: " << _swaps << endl;
+        }
 
-    std::string get_name() {
-        return _name;
-    }
+        void print_optional() {}
 
+        std::string get_name() {
+            return _name;
+        }
 };
