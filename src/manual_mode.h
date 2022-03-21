@@ -1,7 +1,16 @@
-void load_input(vector<int> numbers) {
+void print_array(int array[], int length) {
+    for (int i = 0; i < length; i++) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+}
+
+void load_input(vector<int> &numbers) {
     cout << "Wpisz ciąg liczb naturalnych: " << endl;
     string input;
-    getline(cin, input);
+
+    cin.ignore();
+    getline(cin, input); 
 
     istringstream is(input);
     int number;
@@ -12,18 +21,32 @@ void load_input(vector<int> numbers) {
 
 void manual_entry_mode() {
     vector<int> input_numbers;
-    // int array[input_numbers.size()];
+    load_input(input_numbers);
 
-    // load_input(input_numbers);
-    // copy(input_numbers.begin(), input_numbers.end(), array);
+    int array_length = input_numbers.size(); 
+    int array[input_numbers.size()];
 
-    int array[] = {2, 5, 7, -1, 8, 9, 0, 15};
-    int arrayLength = sizeof(array) / sizeof(array[0]);
-    MergeSort sorting = MergeSort();
-    sorting.sort(array, arrayLength);
+    SortingMethod *sortings[5] = 
+    {new InsertionSort(), 
+    new QuickSort(), 
+    new MergeSort, 
+    new ShellSort(),
+    new HeapSort()};
 
+    for (int i = 0; i < 5; i++) {
+        cout << endl << "--------------------" << endl;
+        copy(input_numbers.begin(), input_numbers.end(), array);
+        cout << "Sortowanie przy użyciu algorytmu: " << sortings[i] -> get_name() << endl;
+        cout << "Ciąg przed posortowaniem: " << endl;
+        print_array(array, array_length);
 
-    for (int i = 0; i < arrayLength; i++) {
-        cout << array[i] << " ";
+        cout << "Ciąg posortowany: " << endl;
+        sortings[i] -> sort(array, array_length);
+        print_array(array, array_length);
+
+        cout << "Informacje na temat sortowania: " << endl;
+        sortings[i] -> print_stats();
+
+        cout << endl;
     }
 }
