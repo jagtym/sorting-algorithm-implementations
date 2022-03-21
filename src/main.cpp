@@ -25,7 +25,7 @@ int main() {
             manual_entry_mode();
             break;
         case 2:
-            // automated_testing_env();
+            automated_mode();
             break;
     }
 }
