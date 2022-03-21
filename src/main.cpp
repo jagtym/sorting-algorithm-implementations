@@ -5,6 +5,7 @@
 
 using namespace std;
 
+#include "sorting_method.h"
 #include "sorting_algorithms/quick_sort.h"
 #include "sorting_algorithms/heap_sort.h"
 #include "sorting_algorithms/merge_sort.h"
@@ -27,5 +28,4 @@ int main() {
             // automated_testing_env();
             break;
     }
-
 }
