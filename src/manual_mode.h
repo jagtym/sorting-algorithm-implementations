@@ -46,6 +46,7 @@ void manual_entry_mode() {
 
         cout << "Informacje na temat sortowania: " << endl;
         sortings[i] -> print_stats();
+        sortings[i] -> print_optional();
 
         cout << endl;
     }
