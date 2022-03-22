@@ -6,6 +6,15 @@ int get_avg(vector<int> &v) {
     return sum / v.size();
 }
 
+int is_array_sorted(int arr[], int n)
+{
+    if (n == 1 || n == 0)
+        return 1;
+    if (arr[n - 1] > arr[n - 2])
+        return 0;
+    return is_array_sorted(arr, n - 1);
+}
+
 void exec_sort(int **arrays, int length, string type, SortingMethod *m) {
     fstream file;
     file.open("results/" + m -> get_name() + "_" + type  + ".txt", std::ios::app);
@@ -22,6 +31,13 @@ void exec_sort(int **arrays, int length, string type, SortingMethod *m) {
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
 
+        if (!is_array_sorted(array, length)) {
+            print_array(arrays[i], length);
+            print_array(array, length);
+            cout << "Error in " << m -> get_name() << endl;
+            exit(1);
+        }
+
         int comp = m -> get_comp();
         int swaps = m -> get_swaps();        
 
@@ -29,6 +45,7 @@ void exec_sort(int **arrays, int length, string type, SortingMethod *m) {
         comparisons_c.push_back(comp);
         swaps_c.push_back(swaps);
         
+        cout << m -> get_name() << endl;
         m -> print_stats();
     }
 
