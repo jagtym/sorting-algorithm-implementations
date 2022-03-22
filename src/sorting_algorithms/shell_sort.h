@@ -15,7 +15,8 @@ class ShellSort : public SortingMethod {
         for ( ; gap > 0; gap /= 3) {
             _gap_values.push_back(gap);
             for (int i = gap; i < length; i++) {
-                for (int j = i; j >= gap && array[j - gap] < array[j]; j -= gap, _comparisons++) {
+                _comparisons++;
+                for (int j = i; j >= gap && array[j - gap] < array[j]; j -= gap) {
                     swap(array[j], array[j - gap]);
                     _swaps++;
                 }
