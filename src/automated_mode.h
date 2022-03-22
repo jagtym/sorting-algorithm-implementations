@@ -1,37 +1,41 @@
-#define SPACE_BETWEEN 5
+int get_avg(vector<int> &v) {
+    int sum = 0;
+    for (int i = 0; i < v.size(); i++) {
+        sum += v[i];
+    }
+    return sum / v.size();
+}
 
-void exec_sort(int s_array[], int length, string type) {
+void exec_sort(int **arrays, int length, string type, SortingMethod *m) {
+    fstream file;
+    file.open("results/" + m -> get_name() + "_" + type  + ".txt", std::ios::app);
+    vector<int> times_c;
+    vector<int> comparisons_c;
+    vector<int> swaps_c;
 
-    
-    
-    SortingMethod *sortings[5] = 
-        {new InsertionSort(), 
-        new QuickSort(), 
-        new MergeSort, 
-        new ShellSort(),
-        new HeapSort()};
-
-    for (int i = 0; i < 5; i++) {
-        fstream file;
-        file.open("results/" + sortings[i] -> get_name() + "_" + type + ".txt", std::ios::app);
-
+    for (int i = 0; i < 10; i++) {
         int array[length];
-
-        copy(s_array, s_array + length, array);
+        copy(arrays[i], arrays[i] + length, array);
 
         auto start = high_resolution_clock::now();
-        sortings[i] -> sort(array, length);
+        m -> sort(array, length);
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
+
+        int comp = m -> get_comp();
+        int swaps = m -> get_swaps();        
+
+        times_c.push_back(duration.count());
+        comparisons_c.push_back(comp);
+        swaps_c.push_back(swaps);
         
-        file << "l:" << length << " ";
-        file << duration.count() << " " << sortings[i] -> get_comp() << " " << sortings[i] -> get_swaps();
-
-        sortings[i] -> print_stats();
-
-        file << endl;
-        file.close();
+        m -> print_stats();
     }
+
+
+    file << length << " " << get_avg(times_c) << " " << get_avg(comparisons_c) << " " << get_avg(swaps_c);
+    file << endl;
+    file.close();
 }
 
 int get_random_in_range(int start, int end) {
@@ -105,20 +109,20 @@ void automated_mode() {
         
         }
         
-        for (int i = 0; i < 10; i++) {
-            exec_sort(in_arrays[i], n, "increasing");
+        SortingMethod *sortings[5] = 
+            {new InsertionSort(), 
+            new QuickSort(), 
+            new MergeSort, 
+            new ShellSort(),
+            new HeapSort()};
+
+        for (int j = 0; j < 5; j++) {
+            exec_sort(in_arrays, n, "increasing", sortings[j]);
+            exec_sort(de_arrays, n, "decreasing", sortings[j]);
+            exec_sort(a_arrays, n, "A_shape", sortings[j]);
+            exec_sort(v_arrays, n, "V_shape", sortings[j]);
+            exec_sort(r_arrays, n, "random", sortings[j]);
         }
-        for (int i = 0; i < 10; i++) {
-            exec_sort(de_arrays[i], n, "decreasing");
-        }
-        for (int i = 0; i < 10; i++) {
-            exec_sort(a_arrays[i], n, "A_shape");
-        }
-        for (int i = 0; i < 10; i++) {
-            exec_sort(v_arrays[i], n, "V_shape");
-        }
-        for (int i = 0; i < 10; i++) {
-            exec_sort(r_arrays[i], n, "random");
-        }
+
     }
 }
