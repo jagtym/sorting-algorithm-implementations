@@ -5,35 +5,22 @@ class QuickSort : public SortingMethod {
     std::string _name = "quick sort";
 
     int divide(int array[], int start, int end) {
-        int pivot_index = end - 1;
-        _pivot_values.push_back(array[pivot_index]);
-        int left_index = start;
-        int right_index = end - 2;
+        int pivot_index = end;
+        int smaller_index = start;
 
-        while (left_index <= right_index) {
-
-            while (array[left_index] > array[pivot_index]) {
-                _comparisons++;
-                left_index++;
-            }
-            while (array[right_index] < array[pivot_index]) {
-                _comparisons++;
-                right_index++;
-            }
-            if (left_index < pivot_index) {
-                _comparisons++;
-                swap(array[left_index++], array[right_index--]);
+        for (int i = start; i <= end - 1; i++) {
+            if (array[i] > array[pivot_index]) {
+                smaller_index++; 
+                swap(array[i], array[smaller_index - 1]);
                 _swaps++;
             }
+            _comparisons++;
         }
-
-        swap(array[left_index], array[pivot_index]);
+        swap(array[smaller_index], array[end]);
         _swaps++;
+        return smaller_index;
 
-        return left_index;
     }
-
-
 
     void quick_sort(int array[], int start, int end) {
 
@@ -43,7 +30,7 @@ class QuickSort : public SortingMethod {
         
         int divide_pivot_index = divide(array, start, end);
 
-        quick_sort(array, start, divide_pivot_index);
+        quick_sort(array, start, divide_pivot_index - 1);
         quick_sort(array, divide_pivot_index + 1, end);
     }
 
@@ -52,7 +39,7 @@ class QuickSort : public SortingMethod {
             _comparisons = 0;
             _swaps = 0;
 
-            quick_sort(array, 0, length);
+            quick_sort(array, 0, length - 1);
         }
 
         void print_stats() {
