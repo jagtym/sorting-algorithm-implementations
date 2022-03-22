@@ -6,6 +6,7 @@ class QuickSort : public SortingMethod {
 
     int divide(int array[], int start, int end) {
         int pivot_index = end;
+        _pivot_values.push_back(array[pivot_index]);
         int smaller_index = start;
 
         for (int i = start; i <= end - 1; i++) {
