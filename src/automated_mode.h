@@ -92,7 +92,7 @@ void generate_decreasing_array(int array[], int size) {
 
 void automated_mode() {
 
-    int n_values[] = {10, 30, 50, 70, 150, 400, 700, 1300, 2500, 4000, 10000, 25000};
+    int n_values[] = {10, 30, 50, 70, 150, 400, 700, 1300, 2500, 4000, 10000};
     int n_val_size = sizeof(n_values) / sizeof(n_values[0]);
 
     int* in_arrays[10];
