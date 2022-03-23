@@ -8,6 +8,7 @@ class ShellSort : public SortingMethod {
         int length = end - start;
 
         int gap = 1;
+        // g = (3^k - 1) / 2 || g = 3 * g + 1 -> iterative function to recursive
         while (gap < length / 3) {
             gap = 3 * gap + 1;
         }
